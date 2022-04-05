@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+</head>
+
+<body>
+    <form action="/" method="POST">
+        <label for="">Nome</label>
+        <input type="text" name="name" id="name">
+        <br>
+
+        <label for="">Email</label>
+        <input type="text" id="email" name="email">
+        <br>
+
+        <label for="">CEP</label>
+        <input type="text" name="cep" id="cep" pattern="\d{5}-\d{3}">
+        <br>
+
+        <label for="">Rua</label>
+        <input type="text" name="street" id="street" disabled>
+        <br>
+
+        <label for="">Numero</label>
+        <input type="number" name="num" id="num" disabled>
+        <br>
+
+        <label for="">Bairro</label>
+        <input type="text" name="district" id="district" disabled>
+        <br>
+
+        <label for="">Cidade</label>
+        <input type="text" name="city" id="city" disabled>
+        <br>
+
+        <label for="">Estado</label>
+        <input type="text" name="state" id="state" disabled>
+
+
+    </form>
+
+</body>
+
+<script src="../js/index.js"></script>
+
+</html>
