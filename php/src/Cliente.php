@@ -27,10 +27,10 @@ class Cliente{
     //buscar um cliente por id
     public function findById(string $id):array{
         //tratando sql injetion
-        $query = 'SELECT * FROM artigos WHERE = ?';
+        $query = 'SELECT * FROM cliente WHERE = ?';
 
         //preparando query para receber as circustancias
-        $result = $this->mysql->prepare($query);
+        $result = $this->mysqli->prepare($query);
 
         //substituindo o ? da query pela variavel enviada
         //Passa variáveis para um preparado comando como parâmetros
@@ -49,10 +49,10 @@ class Cliente{
     //buscar um cliente por email
     public function findByEmail(string $email):array{
         //tratando sql injetion
-        $query = 'SELECT * FROM artigos WHERE = ?';
+        $query = 'SELECT * FROM cliente WHERE = ?';
 
         //preparando query para receber as circustancias
-        $result = $this->mysql->prepare($query);
+        $result = $this->mysqli->prepare($query);
 
         //substituindo o ? da query pela variavel enviada
         //Passa variáveis para um preparado comando como parâmetros
@@ -66,5 +66,73 @@ class Cliente{
         ou null se não houverem mais linhas.*/
         $cliente = $result->get_result()->fetch_assoc();
         return $cliente;
+    }
+
+    //Criar um novo cliente
+    public function createCliente(
+        string $name,
+        string $email,
+        string $cep,
+        string $stret,
+        int $num,
+        string $district,
+        string $city,
+        string $state,
+        string $password):void{
+        $query = 'INSERT INTO 
+        cliente (name,email,cep,street,num,district,city,state,password) 
+        VALUES(?,?,?,?,?,?,?,?,?)';
+        
+        $createCliente = $this->mysqli->prepare($query);
+        $createCliente->bind_param('ssssissss',$name,$email,$cep,$stret,$num,$district,$city,$state,$password);
+        $createCliente->execute();
+    }
+
+    //Alterar as infomações
+    public function updateCliente(
+        string $id,
+        string $name,
+        string $email,
+        string $cep,
+        string $stret,
+        int $num,
+        string $district,
+        string $city,
+        string $state,
+        string $password):void{
+
+        $query = "UPDATE cliente SET 
+        name = ?,
+        email = ?,
+        cep = ?,
+        street = ?,
+        num = ?,
+        district = ?,
+        city = ?,
+        state = ?,
+        password = ? WHERE id = ?";
+        $updateCliente = $this->mysqli->prepare($query);
+
+        $updateCliente->bind_param('ssssisssss',
+        $name,
+        $email,
+        $cep,
+        $stret,
+        $num,
+        $district,
+        $city,
+        $state,
+        $password,
+        $id);
+        
+        $updateCliente->execute();
+    }
+
+    //Deletar um cliente
+    public function deleteCliente(string $id):void{
+        $query = "DELETE FROM cliente WHERE id = ?";
+        $deleteCliente = $this->mysqli->prepare($query);
+        $deleteCliente->bind_param('s',$id);
+        $deleteCliente->execute();
     }
 }
