@@ -79,12 +79,15 @@ class Cliente{
         string $city,
         string $state,
         string $password):void{
+            //hasheando a senha que muda a todo momento.
+            $hash = password_hash($password,PASSWORD_DEFAULT);
+
         $query = 'INSERT INTO 
         cliente (name,email,cep,street,num,district,city,state,password) 
         VALUES(?,?,?,?,?,?,?,?,?)';
         
         $createCliente = $this->mysqli->prepare($query);
-        $createCliente->bind_param('ssssissss',$name,$email,$cep,$stret,$num,$district,$city,$state,$password);
+        $createCliente->bind_param('ssssissss',$name,$email,$cep,$stret,$num,$district,$city,$state,$hash);
         $createCliente->execute();
     }
 
