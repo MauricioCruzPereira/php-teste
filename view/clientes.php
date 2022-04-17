@@ -16,6 +16,10 @@ $client = $cliente->readClientes();
     <title>Document</title>
 </head>
 <body>
+<?php
+        include './partials/cabecalho.php'
+    ?>
+
     <?php
     foreach($client as $cliente) : ?>
     <td><?= $cliente['name'];?></td>

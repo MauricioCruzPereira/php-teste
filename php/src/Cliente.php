@@ -27,7 +27,7 @@ class Cliente{
     //buscar um cliente por id
     public function findById(string $id):array{
         //tratando sql injetion
-        $query = 'SELECT * FROM cliente WHERE = ?';
+        $query = 'SELECT * FROM cliente WHERE id = ?';
 
         //preparando query para receber as circustancias
         $result = $this->mysqli->prepare($query);
@@ -49,7 +49,7 @@ class Cliente{
     //buscar um cliente por email
     public function findByEmail(string $email):array{
         //tratando sql injetion
-        $query = 'SELECT * FROM cliente WHERE = ?';
+        $query = 'SELECT * FROM cliente WHERE email = ?';
 
         //preparando query para receber as circustancias
         $result = $this->mysqli->prepare($query);

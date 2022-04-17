@@ -9,6 +9,9 @@
 </head>
 
 <body>
+    <?php
+        include './partials/cabecalho.php'
+    ?>
     <form action="../php/src/createCliente.php" method="POST">
         <label for="">Nome</label>
         <input type="text" name="name" id="name">
