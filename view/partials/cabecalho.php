@@ -1,5 +1,5 @@
 <ul>
-    <li><a href="../html/index.php">Home</a></li>
-    <li><a href="../html/login.php">Login</a></li>
-    <li><a href="../html/clientes.php">Clientes</a></li>
+    <li><a href="../php/index.php">Home</a></li>
+    <li><a href="../php/login.php">Login</a></li>
+    <li><a href="../php/clientes.php">Clientes</a></li>
 </ul>

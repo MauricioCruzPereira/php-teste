@@ -2,26 +2,19 @@
 
 require_once 'Cliente.php';
 require_once '../database/conexao.php';
+require_once '../function/verifyCamps.php';
 
-$name = $_POST['name'];
-$email = $_POST['email'];
-$cep = $_POST['cep'];
-$street = $_POST['street'];
-$num = $_POST['num'];
-$district = $_POST['district'];
-$city = $_POST['city'];
-$state = $_POST['state'];
-$password = $_POST['password'];
-
-echo $name;
-echo $email;
-echo $cep;
-echo $street;
-echo $num;
-echo $district;
-echo $city;
-echo $state;
-echo $password;
+if(analisaCamps()){
+    echo 'certo';
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $cep = $_POST['cep'];
+    $street = $_POST['street'];
+    $num = $_POST['num'];
+    $district = $_POST['district'];
+    $city = $_POST['city'];
+    $state = $_POST['state'];
+    $password = $_POST['password'];
 
 $cliente = new Cliente($mysqli);
 $cliente->createCliente($name,
@@ -33,6 +26,14 @@ $district,
 $city,
 $state,
 $password);
+
+header('Location: ../../view/clientes.php');
+}
+else{
+    echo 'n deu certo';
+}
+
+
 
 
 ?>

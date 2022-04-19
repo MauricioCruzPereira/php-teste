@@ -2,12 +2,10 @@
 
 require_once '../php/database/conexao.php';
 require_once '../php/src/Cliente.php';
-$id = $_GET['id'];
+$id = $_POST['id'];
 
 $cliente = new Cliente($mysqli);
 $clientFind = $cliente->findById($id);
-
-
 
 ?>
 
