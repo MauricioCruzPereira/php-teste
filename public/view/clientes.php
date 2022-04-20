@@ -1,7 +1,7 @@
 <?php
-require_once '../php/database/conexao.php';
-require_once '../php/src/Cliente.php';
-
+require_once '../../app/class/Cliente.php';
+require_once '../../app/database/conexao.php';
+require_once '../../app/function/verifyCamps.php';
 $cliente = new Cliente($mysqli);
 $client = $cliente->readClientes();
 ?>
@@ -50,7 +50,7 @@ $client = $cliente->readClientes();
         <td><?= $cliente['district'];?></td>
         <td><?= $cliente['city'];?></td>
         <td><?= $cliente['state'];?></td>
-        <td><form action="../php/src/deleteCliente.php" method="POST">
+        <td><form action="./post/deleteCliente.php" method="POST">
             <input type="hidden" name="id" value="<?= $cliente['id'];?>">
             <button>DELETAR</button>
         </form></td>

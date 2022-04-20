@@ -1,7 +1,7 @@
 <?php
 
-require_once '../php/database/conexao.php';
-require_once '../php/src/Cliente.php';
+require_once '../../app/class/Cliente.php';
+require_once '../../app/database/conexao.php';
 $id = $_POST['id'];
 
 $cliente = new Cliente($mysqli);
@@ -23,7 +23,7 @@ $clientFind = $cliente->findById($id);
     <?php
         include './partials/cabecalho.php'
     ?>
-    <form action="../php/src/updateCliente.php" method="POST">
+    <form action="post/updateCliente.php" method="POST">
         <label for="">Nome</label>
         <input type="text" name="name" id="name" value="<?= $clientFind['name']?>">
         <br>

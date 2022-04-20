@@ -1,8 +1,8 @@
 <?php
 
-require_once 'Cliente.php';
-require_once '../database/conexao.php';
-require_once '../function/verifyCamps.php';
+require_once '../../../app/class/Cliente.php';
+require_once '../../../app/database/conexao.php';
+require_once '../../../app/function/verifyCamps.php';
 
 if(analisaCamps()){
 $name = $_POST['name'];
@@ -28,11 +28,8 @@ $city,
 $state,
 $password
 );
-header('Location: ../../view/clientes.php');
+header('Location: ../clientes.php');
 }
 else{
     echo 'n deu certo';
 }
-
-
-?>

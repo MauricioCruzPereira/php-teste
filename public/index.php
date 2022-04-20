@@ -10,9 +10,9 @@
 
 <body>
     <?php
-        include './partials/cabecalho.php'
+        include 'view/partials/cabecalho.php'
     ?>
-    <form action="../php/src/createCliente.php" method="POST">
+    <form action="view/post/createCliente.php" method="POST">
         <label for="">Nome</label>
         <input type="text" name="name" id="name">
         <br>
@@ -54,6 +54,6 @@
 
 </body>
 
-<script src="../js/index.js"></script>
+<script src="assets/js/index.js"></script>
 
 </html>

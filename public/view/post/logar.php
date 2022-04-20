@@ -1,8 +1,9 @@
 <?php
 
 if($_POST['email'] != "" && $_POST['password'] != ""){
-    require_once '../database/conexao.php';
-    require_once './Cliente.php';
+    require_once '../../../app/class/Cliente.php';
+    require_once '../../../app/database/conexao.php';
+    require_once '../../../app/function/verifyCamps.php';
     
     $cliente = new Cliente($mysqli);
     
@@ -19,9 +20,5 @@ if($_POST['email'] != "" && $_POST['password'] != ""){
     }
 }
 else{
-    header('Location: ../../html/login.php');
+    header('Location: ../login.php');
 }
-
-
-
-?>

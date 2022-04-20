@@ -1,12 +1,12 @@
 <?php
 
-require_once 'Cliente.php';
-require_once '../database/conexao.php';
-require_once '../function/verifyCamps.php';
+require_once '../../../app/class/Cliente.php';
+require_once '../../../app/database/conexao.php';
+require_once '../../../app/function/verifyCamps.php';
 
 if(analisaCamps()){
     echo 'certo';
-    $name = $_POST['name'];
+    $name = filter_input(INPUT_POST,'name',FILTER_SANITIZE_STRING);
     $email = $_POST['email'];
     $cep = $_POST['cep'];
     $street = $_POST['street'];
@@ -27,13 +27,9 @@ $city,
 $state,
 $password);
 
-header('Location: ../../view/clientes.php');
+header('Location: ../clientes.php');
+
 }
 else{
     echo 'n deu certo';
 }
-
-
-
-
-?>
