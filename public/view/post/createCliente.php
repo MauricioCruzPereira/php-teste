@@ -5,19 +5,17 @@ require_once '../../../app/database/conexao.php';
 require_once '../../../app/function/verifyCamps.php';
 
 if(analisaCamps()){
-    echo 'certo';
     $name = filter_input(INPUT_POST,'name',FILTER_SANITIZE_STRING);
-    $email = $_POST['email'];
-    $cep = $_POST['cep'];
-    $street = $_POST['street'];
-    $num = $_POST['num'];
-    $district = $_POST['district'];
-    $city = $_POST['city'];
-    $state = $_POST['state'];
-    $password = $_POST['password'];
+    $email = filter_input(INPUT_POST,'email',FILTER_SANITIZE_EMAIL);
+    $cep = filter_input(INPUT_POST,'cep',FILTER_SANITIZE_STRING);
+    $street = filter_input(INPUT_POST,'street',FILTER_SANITIZE_STRING);
+    $num = filter_input(INPUT_POST,'num',FILTER_SANITIZE_INT);
+    $district = filter_input(INPUT_POST,'district',FILTER_SANITIZE_STRING);
+    $city = filter_input(INPUT_POST,'city',FILTER_SANITIZE_STRING);
+    $state = filter_input(INPUT_POST,'state',FILTER_SANITIZE_STRING);
+    $password = filter_input(INPUT_POST,'password',FILTER_SANITIZE_SPECIAL_CHARS);
 
-$cliente = new Cliente($mysqli);
-$cliente->createCliente($name,
+(new Cliente($mysqli))->createCliente($name,
 $email,
 $cep,
 $street,

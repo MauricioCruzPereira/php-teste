@@ -2,8 +2,7 @@
 require_once '../../app/class/Cliente.php';
 require_once '../../app/database/conexao.php';
 require_once '../../app/function/verifyCamps.php';
-$cliente = new Cliente($mysqli);
-$client = $cliente->readClientes();
+
 ?>
 
 <!DOCTYPE html>
@@ -40,7 +39,7 @@ $client = $cliente->readClientes();
 
         
         <?php
-        foreach($client as $cliente) : ?>
+        foreach((new Cliente($mysqli))->readClientes() as $cliente) : ?>
         <tr><td><?= $cliente['id'];?></td>
         <td><?= $cliente['name'];?></td>
         <td><?= $cliente['email'];?></td>
