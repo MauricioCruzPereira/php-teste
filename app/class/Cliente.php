@@ -47,7 +47,8 @@ class Cliente{
     }
 
     //buscar um cliente por email
-    public function findByEmail(string $email):array{
+    public function findByEmail(string $email): ?array
+    {
         //tratando sql injetion
         $query = 'SELECT * FROM cliente WHERE email = ?';
 
@@ -60,11 +61,12 @@ class Cliente{
 
         //execulta a query
         $result->execute();
-
+        
         //armazenando o resultado em uma variavel
         /*fetch_assoc = Retorna uma matriz associativa que corresponde a linha obtida, 
         ou null se não houverem mais linhas.*/
         $cliente = $result->get_result()->fetch_assoc();
+
         return $cliente;
     }
 

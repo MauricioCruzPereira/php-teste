@@ -16,19 +16,26 @@ $state = filter_input(INPUT_POST,'state',FILTER_SANITIZE_STRING);
 $password = filter_input(INPUT_POST,'password',FILTER_SANITIZE_SPECIAL_CHARS);
 $id = filter_input(INPUT_POST,'id',FILTER_SANITIZE_STRING);
 
-(new Cliente($mysqli))->updateCliente($id,
-$name,
-$email,
-$cep,
-$street,
-$num,
-$district,
-$city,
-$state,
-$password
-);
+    $clientFind = new Cliente($mysqli);
+    $result = $clientFind->findByEmail($email);
 
-header('Location: ../clientes.php');
+if(!$result){
+    (new Cliente($mysqli))->updateCliente($id,
+    $name,
+    $email,
+    $cep,
+    $street,
+    $num,
+    $district,
+    $city,
+    $state,
+    $password
+    );
+  
+}
+else{
+    echo 'EMAIL';
+}
 }
 else{
     echo 'n deu certo';
